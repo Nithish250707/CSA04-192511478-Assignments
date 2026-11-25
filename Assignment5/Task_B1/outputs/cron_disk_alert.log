@@ -1,0 +1,10 @@
+Disk check at 2026-11-25 14:05:00 (threshold 80%)
+OK:    / (/dev/disk3s1s1) is 65% full
+OK:    /System/Volumes/VM (/dev/disk3s6) is 1% full
+OK:    /System/Volumes/Preboot (/dev/disk3s2) is 60% full
+OK:    /System/Volumes/Update (/dev/disk3s4) is 2% full
+OK:    /System/Volumes/xarts (/dev/disk1s2) is 2% full
+OK:    /System/Volumes/iSCPreboot (/dev/disk1s1) is 2% full
+OK:    /System/Volumes/Hardware (/dev/disk1s3) is 1% full
+ALERT: /System/Volumes/Data (/dev/disk3s5) is 97% full, 7375452 KiB free
+1 filesystem(s) at or above 80%
