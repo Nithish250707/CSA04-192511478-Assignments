@@ -1,0 +1,45 @@
+Host: Darwin 27.0.0
+
+$ stat -x /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/sample.txt
+  File: "/var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/sample.txt"
+  Size: 12           FileType: Regular File
+  Mode: (0644/-rw-r--r--)         Uid: (  501/nithishgovindasamy)  Gid: (   20/   staff)
+Device: 1,18   Inode: 49475576    Links: 1
+Access: Wed Nov 25 14:31:52 2026
+Modify: Wed Nov 25 14:31:52 2026
+Change: Wed Nov 25 14:31:52 2026
+ Birth: Wed Nov 25 14:31:52 2026
+
+$ stat -f 'inode %i  size %z B  blocks %b x 512 B  optimal I/O block %k B' /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/sample.txt
+inode 49475576  size 12 B  blocks 8 x 512 B  optimal I/O block 4096 B
+
+$ df -i /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3
+Filesystem   512-blocks      Used Available Capacity iused    ifree %iused  Mounted on
+/dev/disk3s5  478724992 413119456  14182544    97% 2420164 70912720    3%   /System/Volumes/Data
+
+$ df -h /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s5   228Gi   197Gi   6.8Gi    97%    2.4M   71M    3%   /System/Volumes/Data
+
+$ ls -i /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/sample.txt
+49475576 /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/sample.txt
+
+$ diskutil info / | grep -E 'File System Personality|Block Size|Container Total|Container Free|Volume Free|Encrypted'
+   File System Personality:   APFS
+   Device Block Size:         4096 Bytes
+   Container Total Space:     245.1 GB (245107195904 Bytes) (exactly 478724992 512-Byte-Units)
+   Container Free Space:      7.3 GB (7261462528 Bytes) (exactly 14182544 512-Byte-Units)
+   Allocation Block Size:     4096 Bytes
+   Encrypted:                 No
+   FileVault:                 Yes
+
+$ tmutil listlocalsnapshots /   (APFS snapshots)
+Snapshots for disk /:
+
+== Copy-on-write evidence: full copy vs APFS clone of a 256 MiB file
+cp    (full copy): 163.3 ms, free space change -256 MiB
+cp -c (CoW clone): 37.5 ms, free space change +0 MiB
+(df free space also moves with other activity on the disk; the clone shares blocks until either file is written)
+49475578 -rw-r--r--  1 nithishgovindasamy  staff  268435456 25 Nov 14:31 /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/big.bin
+49475581 -rw-r--r--  1 nithishgovindasamy  staff  268435456 25 Nov 14:31 /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/clone.bin
+49475579 -rw-r--r--  1 nithishgovindasamy  staff  268435456 25 Nov 14:31 /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a4t3/copy.bin
