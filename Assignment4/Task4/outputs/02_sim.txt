@@ -1,0 +1,37 @@
+== Part 1: head 53, queue 98 183 37 122 14 124 65 67 (SCAN/LOOK move towards 0 first; C-SCAN/C-LOOK move up)
+FCFS    53 98 183 37 122 14 124 65 67  -> 640 cylinders
+SSTF    53 65 67 37 14 98 122 124 183  -> 236 cylinders
+SCAN    53 37 14 (0) 65 67 98 122 124 183  -> 236 cylinders
+C-SCAN  53 65 67 98 122 124 183 (199, jump to 0) 14 37  -> 382 cylinders (incl. 199-cylinder jump)
+LOOK    53 37 14 65 67 98 122 124 183  -> 208 cylinders
+C-LOOK  53 65 67 98 122 124 183 (jump) 14 37  -> 322 cylinders (incl. the return jump)
+
+== Part 2: 10,000 random requests, seed 42
+load    alg       avg move/req    avg wait ms    max wait ms
+light   FCFS             65.82           2.18          34.63
+light   SSTF             62.67           1.59          29.09
+light   SCAN             99.56           4.79          24.23
+light   C-SCAN          123.07          10.44          31.37
+light   LOOK             62.80           1.62          23.76
+light   C-LOOK           64.31           3.51          27.84
+medium  FCFS             65.82          18.85         114.70
+medium  SSTF             53.20           3.84          45.16
+medium  SCAN             68.11           7.31          33.42
+medium  C-SCAN           74.00          12.46          38.98
+medium  LOOK             53.52           3.98          28.88
+medium  C-LOOK           56.37           6.70          36.73
+heavy   FCFS             65.82        3792.07        7640.86
+heavy   SSTF             42.46           6.21          74.61
+heavy   SCAN             47.66           9.09          37.67
+heavy   C-SCAN           49.21          14.22          40.02
+heavy   LOOK             42.94           6.47          38.80
+heavy   C-LOOK           44.98          10.22          41.12
+
+== Part 3: starvation - request at 183 (t = 0) + one request at cylinder 55..65 every 1 ms for 5,000 ms
+   head starts at 60 moving towards 0, so SCAN/LOOK must finish their downward sweep first
+FCFS    wait of the request at 183:       0.0 ms   (avg wait of all    475.4 ms)
+SSTF    wait of the request at 183:    5057.0 ms   (avg wait of all     38.6 ms)
+SCAN    wait of the request at 183:      15.3 ms   (avg wait of all    169.0 ms)
+C-SCAN  wait of the request at 183:       0.0 ms   (avg wait of all    203.3 ms)
+LOOK    wait of the request at 183:       2.2 ms   (avg wait of all     40.1 ms)
+C-LOOK  wait of the request at 183:       0.0 ms   (avg wait of all     47.1 ms)

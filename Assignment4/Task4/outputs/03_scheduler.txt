@@ -1,0 +1,5 @@
+Host Darwin 27.0.0: there is no /sys/block on macOS and no user-selectable I/O scheduler.
+The internal disk is an SSD, which is why reordering by cylinder brings nothing:
+   Device / Media Name:       APPLE SSD AP0256Z
+   Protocol:                  Apple Fabric
+   Solid State:               Yes
