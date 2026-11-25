@@ -1,0 +1,37 @@
+== Tree (find)
+./backup
+./home
+./home/cse
+./home/cse/2025
+./home/cse/2025/192511478
+./home/cse/2025/192511478/group07-link
+./home/cse/2025/192511478/notes.txt
+./home/cse/2025/192511479
+./projects
+./projects/csa0421
+./projects/csa0421/group07
+./projects/csa0421/group07/report.md
+./staff
+
+== Permissions (ls -ld; '@'/'+' = extended attributes/ACL)
+drwx------  4 nithishgovindasamy  staff  128 25 Nov 14:30 home/cse/2025/192511478
+lrwxr-xr-x  1 nithishgovindasamy  staff   36 25 Nov 14:30 home/cse/2025/192511478/group07-link -> ../../../../projects/csa0421/group07
+drwx------  2 nithishgovindasamy  staff   64 25 Nov 14:30 home/cse/2025/192511479
+drwxrws---+ 3 nithishgovindasamy  staff   96 25 Nov 14:30 projects/csa0421/group07
+
+== ACL on the project folder (macOS chmod +a): ls -led
+drwxrws---+ 3 nithishgovindasamy  staff  96 25 Nov 14:30 projects/csa0421/group07
+ 0: group:admin allow list,search
+
+== Symlink resolves to the shared folder
+shared report
+
+== New file in the setgid folder gets the folder's group (staff). (BSD/macOS always does this; on Linux it needs the setgid bit.)
+-rw-r--r--  1 nithishgovindasamy  staff  0 25 Nov 14:30 projects/csa0421/group07/new.txt
+
+== Flat directory with 12,000 students vs per-student directory
+list flat dir   (12000 entries):    3.270 ms
+list own dir    (    2 entries):    0.012 ms
+open one file by name in flat dir:   0.0016 ms (APFS directories are B-trees, so lookup by exact name stays fast)
+linear search of the listing for one name:    0.140 ms
+name clash: a second student cannot also create 's192506000_project.docx' in the flat directory -> exists
