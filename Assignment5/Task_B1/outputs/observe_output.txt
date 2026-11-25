@@ -1,0 +1,122 @@
+
+===== Host =====
+$ uname -a
+Darwin Nithishs-MacBook-Air.local 27.0.0 Darwin Kernel Version 27.0.0: Tue Aug 11 21:02:57 PDT 2026; root:xnu-13432.1.9~1/RELEASE_ARM64_T8132 arm64
+$ sw_vers
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+$ uptime
+13:43  up 52 mins, 2 users, load averages: 1.50 1.68 1.91
+
+===== Processes (top 10 by CPU) =====
+$ ps -Ao pid,user,%cpu,%mem,rss,stat,comm -r | head -11
+  PID USER              %CPU %MEM    RSS STAT COMM
+    1 root              28.7  0.1  23104 Ss   /sbin/launchd
+ 2995 nithishgovindasamy  19.2  4.6 766352 S+   claude
+  411 _windowserver      7.9  0.8 136560 Ss   /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+  380 root               7.8  0.2  27680 Ss   /usr/libexec/xprotectd
+ 2636 nithishgovindasamy   5.8  0.6 101520 S    /System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal
+ 3822 nithishgovindasamy   3.9  0.0   3424 Ss   /bin/zsh
+  889 nithishgovindasamy   1.1  0.1  17568 S    /usr/libexec/spotlightknowledged.updater
+  381 root               0.8  0.1  20160 Ss   /usr/libexec/opendirectoryd
+  565 _driverkit         0.6  0.2  41136 Ss   /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN
+  339 root               0.3  0.3  44240 Ss   /usr/libexec/logd
+
+===== top snapshot =====
+$ top -l 2 -n 10 -o cpu -stats pid,command,cpu,mem,state | tail -22
+Processes: 791 total, 3 running, 788 sleeping, 3762 threads 
+2026/11/25 13:43:12
+Load Avg: 1.38, 1.66, 1.90 
+CPU usage: 3.69% user, 1.93% sys, 94.37% idle 
+SharedLibs: 903M resident, 183M data, 362M linkedit.
+MemRegions: 0 total, 0B resident, 607M private, 2093M shared.
+PhysMem: 15G used (1947M wired, 1100M compressor), 109M unused.
+VM: 399T vsize, 57G framework vsize, 0(0) swapins, 0(0) swapouts.
+Networks: packets: 271443/291M in, 94402/21M out.
+Disks: 501414/9818M read, 526109/16G written.
+
+PID   COMMAND          %CPU MEM    STATE   
+2995  2.1.332          11.7 243M-  sleeping
+411   WindowServer     6.8  532M   sleeping
+3834  top              6.2  4720K+ running 
+889   spotlightknowled 4.8  10M    sleeping
+2636  Terminal         4.4  108M   sleeping
+0     kernel_task      3.7  10M-   running 
+732   mediaanalysisd   1.7  26M+   running 
+565   com.apple.Driver 0.8  33M    sleeping
+3695  mdworker_shared  0.8  3296K+ sleeping
+467   airportd         0.7  17M    sleeping
+
+===== Memory =====
+free: not available on this OS; using sysctl hw.memsize + vm_stat
+$ sysctl hw.memsize
+hw.memsize: 17179869184
+$ vm_stat
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                     7005.
+Pages active:                                 404308.
+Pages inactive:                               403241.
+Pages speculative:                               292.
+Pages throttled:                                   0.
+Pages wired down:                             124606.
+Pages purgeable:                                5674.
+"Translation faults":                       12801838.
+Pages copy-on-write:                          452472.
+Pages zero filled:                           9228525.
+Pages reactivated:                            498938.
+Pages purged:                                  66341.
+File-backed pages:                            340658.
+Anonymous pages:                              467183.
+Pages stored in compressor:                   184209.
+Pages occupied by compressor:                  70419.
+Decompressions:                               115222.
+Compressions:                                 367449.
+Pageins:                                     1447815.
+Pageouts:                                      39601.
+Swapins:                                           0.
+Swapouts:                                          0.
+$ sysctl vm.swapusage
+vm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)
+
+===== vmstat (3 samples, 1 s apart) =====
+vmstat: not available on this OS; see vm_stat above
+
+===== iostat (3 samples, 1 s apart) =====
+$ iostat -c 3 -w 1
+              disk0       cpu    load average
+    KB/t  tps  MB/s  us sy id   1m   5m   15m
+   26.05  327  8.33   5  3 92  1.38 1.66 1.90
+    4.00    1  0.00  11  1 87  1.38 1.66 1.90
+    5.00    4  0.02   3  1 96  1.38 1.66 1.90
+
+===== Disk usage =====
+$ df -h
+Filesystem        Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s1s1   228Gi    13Gi   6.9Gi    65%    484k   72M    1%   /
+devfs            209Ki   209Ki     0Bi   100%     733     0  100%   /dev
+/dev/disk3s6     228Gi    24Ki   6.9Gi     1%       0   72M    0%   /System/Volumes/VM
+/dev/disk3s2     228Gi    10Gi   6.9Gi    60%    1.1k   72M    0%   /System/Volumes/Preboot
+/dev/disk3s4     228Gi    79Mi   6.9Gi     2%     110   72M    0%   /System/Volumes/Update
+/dev/disk1s2     500Mi   6.0Mi   482Mi     2%       1  4.9M    0%   /System/Volumes/xarts
+/dev/disk1s1     500Mi   6.0Mi   482Mi     2%      30  4.9M    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3     500Mi   908Ki   482Mi     1%      89  4.9M    0%   /System/Volumes/Hardware
+/dev/disk3s5     228Gi   197Gi   6.9Gi    97%    2.4M   72M    3%   /System/Volumes/Data
+map auto_home      0Bi     0Bi     0Bi   100%       0     0     -   /System/Volumes/Data/home
+
+===== Listening sockets =====
+ss: not available on this OS; using netstat
+$ netstat -an -p tcp | grep LISTEN
+tcp4       0      0  127.0.0.1.49913        *.*                    LISTEN     
+tcp46      0      0  *.53147                *.*                    LISTEN     
+tcp46      0      0  *.53146                *.*                    LISTEN     
+tcp6       0      0  *.49874                *.*                    LISTEN     
+tcp4       0      0  *.49874                *.*                    LISTEN     
+tcp4       0      0  127.0.0.1.49259        *.*                    LISTEN     
+tcp4       0      0  127.0.0.1.49258        *.*                    LISTEN     
+tcp4       0      0  127.0.0.1.49249        *.*                    LISTEN     
+tcp4       0      0  127.0.0.1.49248        *.*                    LISTEN     
+tcp6       0      0  *.5000                 *.*                    LISTEN     
+tcp4       0      0  *.5000                 *.*                    LISTEN     
+tcp6       0      0  *.7000                 *.*                    LISTEN     
+tcp4       0      0  *.7000                 *.*                    LISTEN     

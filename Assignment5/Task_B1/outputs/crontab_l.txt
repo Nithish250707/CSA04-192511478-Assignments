@@ -1,0 +1,5 @@
+# CSA04 A5-B1 – installed with: crontab crontab.txt
+# Log summary every hour, on the hour
+0 * * * * /bin/bash /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B1/log_summary.sh >> /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B1/outputs/cron_log_summary.log 2>&1
+# Disk-space alert every hour at minute 5 (threshold 80%)
+5 * * * * /bin/bash /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B1/disk_alert.sh 80 >> /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B1/outputs/cron_disk_alert.log 2>&1

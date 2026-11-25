@@ -1,0 +1,15 @@
+# /etc/systemd/system/result-portal.service  (B1.3 – NOT executed: host is macOS, no systemd)
+[Unit]
+Description=University Result Portal (gunicorn)
+After=network.target
+
+[Service]
+User=portal
+Group=portal
+WorkingDirectory=/opt/result-portal
+ExecStart=/opt/result-portal/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 app:app
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
