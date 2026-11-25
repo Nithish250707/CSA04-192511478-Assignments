@@ -1,0 +1,10 @@
+EAT = (1 - p) x 100 ns + p x 8,000,000 ns
+p = 1 in 1,000      EAT =     8099.900 ns  (81.0x slower than 100 ns)
+p = 1 in 100,000    EAT =      179.999 ns  (1.8x slower than 100 ns)
+p = 1 in 1,000,000  EAT =      108.000 ns  (1.1x slower than 100 ns)
+
+10% slow-down: 110 >= 100 + p(8,000,000 - 100)  =>  p <= 1.2500e-06  = 1 fault in 799990 accesses
+
+Frame allocation example: 62 free frames, process P1 = 10 pages, P2 = 127 pages
+equal:        P1 31, P2 31
+proportional: P1 = 10/137 x 62 = 4.53 -> 4,  P2 = 127/137 x 62 = 57.47 -> 57

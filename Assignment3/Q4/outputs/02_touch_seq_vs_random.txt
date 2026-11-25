@@ -1,0 +1,19 @@
+3 rounds per size, order alternated to remove first-run bias
+   64 MiB seq  pages    4096 | 1st pass: minor    4096 major 0      8.16 ms ( 1992 ns/page) | 2nd pass: minor 0     1.39 ms
+   64 MiB rand pages    4096 | 1st pass: minor    4096 major 0      8.04 ms ( 1962 ns/page) | 2nd pass: minor 0     0.95 ms
+   64 MiB rand pages    4096 | 1st pass: minor    4096 major 0      5.88 ms ( 1435 ns/page) | 2nd pass: minor 0     0.82 ms
+   64 MiB seq  pages    4096 | 1st pass: minor    4096 major 0      6.04 ms ( 1475 ns/page) | 2nd pass: minor 0     0.86 ms
+   64 MiB seq  pages    4096 | 1st pass: minor    4096 major 0      5.38 ms ( 1313 ns/page) | 2nd pass: minor 0     0.55 ms
+   64 MiB rand pages    4096 | 1st pass: minor    4096 major 0      4.98 ms ( 1215 ns/page) | 2nd pass: minor 0     0.39 ms
+  256 MiB seq  pages   16384 | 1st pass: minor   16384 major 0     12.64 ms (  772 ns/page) | 2nd pass: minor 0     2.05 ms
+  256 MiB rand pages   16384 | 1st pass: minor   16384 major 0     11.73 ms (  716 ns/page) | 2nd pass: minor 0     1.81 ms
+  256 MiB rand pages   16384 | 1st pass: minor   16384 major 0     11.21 ms (  684 ns/page) | 2nd pass: minor 0     1.75 ms
+  256 MiB seq  pages   16384 | 1st pass: minor   16384 major 0     10.48 ms (  639 ns/page) | 2nd pass: minor 0     1.78 ms
+  256 MiB seq  pages   16384 | 1st pass: minor   16384 major 0     10.83 ms (  661 ns/page) | 2nd pass: minor 0     1.93 ms
+  256 MiB rand pages   16384 | 1st pass: minor   16384 major 0     11.20 ms (  684 ns/page) | 2nd pass: minor 0     1.98 ms
+  512 MiB seq  pages   32768 | 1st pass: minor   32768 major 0     39.55 ms ( 1207 ns/page) | 2nd pass: minor 0    26.17 ms
+  512 MiB rand pages   32768 | 1st pass: minor   32768 major 0     23.72 ms (  724 ns/page) | 2nd pass: minor 0     6.31 ms
+  512 MiB rand pages   32768 | 1st pass: minor   32768 major 0     22.81 ms (  696 ns/page) | 2nd pass: minor 0     6.87 ms
+  512 MiB seq  pages   32768 | 1st pass: minor   32768 major 0     22.98 ms (  701 ns/page) | 2nd pass: minor 0     6.30 ms
+  512 MiB seq  pages   32768 | 1st pass: minor   32768 major 0     22.48 ms (  686 ns/page) | 2nd pass: minor 0     8.32 ms
+  512 MiB rand pages   32768 | 1st pass: minor   32768 major 0     23.39 ms (  714 ns/page) | 2nd pass: minor 0     6.87 ms

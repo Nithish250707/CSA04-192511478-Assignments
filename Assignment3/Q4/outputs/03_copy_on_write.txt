@@ -1,0 +1,5 @@
+parent: 128 MiB touched, private footprint 129.3 MiB, page size 16384
+child : fork() returned after 2.540 ms (no 128 MiB copy)
+child : after READING all pages  : +8193 minor faults, footprint 1.1 -> 129.1 MiB (sum 8192)
+child : after WRITING 64 MiB     : +4096 minor faults (4096 pages written), footprint 129.1 MiB
+parent: buf[0] is still 1 (child's write went to its own copy)
