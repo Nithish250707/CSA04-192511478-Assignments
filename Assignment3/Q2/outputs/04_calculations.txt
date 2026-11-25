@@ -1,0 +1,20 @@
+== Page-table size, 4 KB pages (single-level table)
+32-bit: 2^20 = 1048576 entries x 4 B = 4194304 B = 4 MiB per process
+48-bit: 2^36 = 68719476736 entries x 8 B = 549755813888 B = 512 GiB per process (impossible -> multi-level)
+48-bit, 4-level (x86-64): each table = 512 entries x 8 B = 4 KB.
+A process using 1 GiB contiguous: 2^18 pages / 512 per page table = 512 PTs,
+  plus 1 PD + 1 PDPT + 1 PML4 = 515 tables = 2060 KiB (instead of 512 GiB flat)
+
+== Effective memory-access time (memory 100 ns, TLB lookup 20 ns - assumed values)
+No TLB: 2 x 100 = 200 ns
+TLB hit 80%: 0.80*(20+100) + 0.20*(20+200) = 140.0 ns (40% slower than 100 ns)
+TLB hit 95%: 0.95*(20+100) + 0.05*(20+200) = 125.0 ns (25% slower than 100 ns)
+TLB hit 99%: 0.99*(20+100) + 0.01*(20+200) = 121.0 ns (21% slower than 100 ns)
+
+== Internal fragmentation: 100 processes, sizes uniform 1 KB .. 8 MB, seed 42
+total requested: 405924753 B (387.1 MiB)
+page     pages used   wasted bytes    waste %   avg waste/proc
+1 KB         396457          47215     0.012%            472 B
+4 KB          99152         201839     0.050%           2018 B
+2 MB            244      105780335    26.059%        1057803 B
+(expected average waste is about half a page per process: 512 B, 2 KB, 1 MB)

@@ -1,0 +1,5 @@
+8 programs loaded          |AAAAAAAAAABBBBBBCCCCCCCCCDDDDDEEEEEEEEEEEEFFFFFFFGGGGGGGGHHHHHHH|  free  0, largest hole  0
+B, D, F, H finish          |AAAAAAAAAA......CCCCCCCCC.....EEEEEEEEEEEE.......GGGGGGGG.......|  free 25, largest hole  7
+Load program X needing 20 units: start = -1
+-> 25 units are free in total, but no single hole is 20 long: external fragmentation.
+   With paging, X would get any 20 free frames; no contiguous hole is needed.

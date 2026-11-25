@@ -1,0 +1,12 @@
+$ getconf PAGESIZE   (Linux x86-64 normally prints 4096)
+16384
+$ sysctl hw.pagesize vm.pagesize
+hw.pagesize: 16384
+vm.pagesize: 16384
+
+$ /usr/bin/time -l ./bin/touch64   (Linux: /usr/bin/time -v; 'page reclaims' = minor faults, 'page faults' = major faults)
+touched 67108864 bytes
+            68812800  maximum resident set size
+                4373  page reclaims
+                   1  page faults
+expected minor faults if every page faults once: 64 MiB / 16384 B = 4096
