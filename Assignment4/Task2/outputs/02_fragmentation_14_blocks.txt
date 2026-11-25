@@ -1,0 +1,4 @@
+AAAAAA........CCCCC.............  free 21, longest free run 13
+F (14 blocks) contiguous: start -1
+F (14 blocks) indexed: index block 6
+AAAAAAfFFFFFFFCCCCCFFFFFFF......

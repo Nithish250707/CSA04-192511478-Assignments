@@ -1,0 +1,1 @@
+IDENTICAL to expected output (diff exit 0)

@@ -1,0 +1,11 @@
+4 GB file / 4 KB blocks = 1048576 blocks; pointers per index block = 1024
+Reads to reach the last block (block 1048575):
+  contiguous : 1 (address = start + 1048575)
+  linked     : 1048576 (follow the chain from block 0)
+  FAT        : 1 data read + 1048575 in-memory FAT look-ups (if the FAT is cached)
+  inode      : block 1048575 is in the double-indirect range [1036, 1049612) -> 3 reads (+1 if the inode is not cached)
+Maximum file size: (12 + 1024 + 1024^2 + 1024^3) x 4 KB = 1074791436 blocks = 4402345721856 bytes = 4.004 TiB
+4 TB disk = 1073741824 blocks
+  bit vector : 1073741824 bits = 134217728 bytes = 128 MiB
+  FAT (4 B per block): 4294967296 bytes = 4 GiB
+  linked free list: 0 extra bytes (pointers live in the free blocks), O(n) to find a run
