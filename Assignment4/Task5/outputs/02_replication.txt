@@ -1,0 +1,11 @@
+== A. Availability over one year (MTBF 8,760 h per node, 24 h repair)
+k = 1 copies: storage 1x | hours with some data unavailable  168 | block availability 99.830137%
+k = 2 copies: storage 2x | hours with some data unavailable    0 | block availability 100.000000%
+k = 3 copies: storage 3x | hours with some data unavailable    0 | block availability 100.000000%
+single NFS server (1 node holds all data): storage 1x | hours everything unavailable 72
+
+== B. Eventual consistency: stale reads vs replication lag (3 replicas, 1 updated synchronously)
+mean lag     1 ms:  0.35% of reads return the old value (strong consistency: 0%, but writes wait for all replicas)
+mean lag    10 ms:  3.37% of reads return the old value (strong consistency: 0%, but writes wait for all replicas)
+mean lag    50 ms: 16.49% of reads return the old value (strong consistency: 0%, but writes wait for all replicas)
+mean lag   200 ms: 42.13% of reads return the old value (strong consistency: 0%, but writes wait for all replicas)
