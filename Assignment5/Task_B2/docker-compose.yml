@@ -1,0 +1,31 @@
+# B2: portal + PostgreSQL, with a named volume so database data survives `docker compose down`.
+services:
+  portal:
+    build: ./app
+    image: result-portal:1.0
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://portal:portalpass@db:5432/results
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: portal
+      POSTGRES_PASSWORD: portalpass   # demo only; use Docker secrets in production
+      POSTGRES_DB: results
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portal -d results"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+
+volumes:
+  pgdata:

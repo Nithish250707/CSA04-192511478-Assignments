@@ -1,0 +1,20 @@
+# Alternative 2 (size comparison): multi-stage build. Dependencies are installed in a
+# builder stage; only the finished virtualenv and app.py are copied to the final image,
+# so pip's build cache and the builder layers are not shipped.
+FROM python:3.12-slim AS builder
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt \
+    && find /opt/venv -name '__pycache__' -prune -exec rm -rf {} + \
+    && pip uninstall -y pip setuptools wheel || true
+
+FROM python:3.12-slim
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH" PYTHONDONTWRITEBYTECODE=1
+WORKDIR /app
+COPY app.py .
+RUN useradd --create-home --shell /usr/sbin/nologin portal && chown -R portal:portal /app
+USER portal
+EXPOSE 8000
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "app:app"]

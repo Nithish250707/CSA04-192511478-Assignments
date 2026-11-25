@@ -1,0 +1,2 @@
+docker-compose.yml parsed OK; services = ['portal', 'db'] ; volumes = ['pgdata']
+run_b2.sh: bash -n syntax check OK

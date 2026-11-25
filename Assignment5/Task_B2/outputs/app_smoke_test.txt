@@ -1,0 +1,14 @@
+$ gunicorn --workers 2 --bind 127.0.0.1:8010 app:app   (macOS, outside Docker; SQLite backend)
+$ curl -s -w ' [HTTP %{http_code}]' http://127.0.0.1:8010/health
+{"db":"sqlite","status":"ok"}
+ [HTTP 200]
+$ curl -s -w ' [HTTP %{http_code}]' http://127.0.0.1:8010/result/20260001
+{"reg_no":"20260001","results":[{"grade":"B","subject":"CSA04 Operating Systems"},{"grade":"A","subject":"CSA14 Compiler Design"},{"grade":"A","subject":"EEA01 Electrical"},{"grade":"A","subject":"UBA06 Mathematics"}],"served_by":"Nithishs-MacBook-Air.local"}
+ [HTTP 200]
+$ curl -s -w ' [HTTP %{http_code}]' http://127.0.0.1:8010/result/192511478
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+ [HTTP 404]
