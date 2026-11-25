@@ -1,0 +1,9 @@
+Running time for 100000 references (locality string, 4 and 8 frames), best of 5:
+  4 frames FIFO    39671 faults    0.362 ms  (3.6 ns/reference)
+  4 frames LRU     36823 faults    0.525 ms  (5.3 ns/reference)
+  4 frames OPT     21547 faults    0.524 ms  (5.2 ns/reference)
+  4 frames CLOCK   38703 faults    0.593 ms  (5.9 ns/reference)
+  8 frames FIFO    17349 faults    0.469 ms  (4.7 ns/reference)
+  8 frames LRU     10086 faults    0.584 ms  (5.8 ns/reference)
+  8 frames OPT      7675 faults    0.601 ms  (6.0 ns/reference)
+  8 frames CLOCK   12733 faults    0.614 ms  (6.1 ns/reference)
