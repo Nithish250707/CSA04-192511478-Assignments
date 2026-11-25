@@ -1,0 +1,11 @@
+5 runs each, alternating (host: macOS 27.0.1, page size 16384)
+unlocked cycles 3072 | page faults in loop 1024 | median   42 ns  p99   5917 ns  p99.9  31792 ns  worst   65917 ns | worst 1st pass   65917 ns, worst later passes    250 ns
+locked   cycles 3072 | page faults in loop   0 | median   41 ns  p99     42 ns  p99.9     83 ns  worst      84 ns | worst 1st pass      83 ns, worst later passes     84 ns
+unlocked cycles 3072 | page faults in loop 1024 | median   42 ns  p99   3708 ns  p99.9  10833 ns  worst   23208 ns | worst 1st pass   12791 ns, worst later passes  23208 ns
+locked   cycles 3072 | page faults in loop   0 | median    0 ns  p99     42 ns  p99.9     42 ns  worst      42 ns | worst 1st pass      42 ns, worst later passes     42 ns
+unlocked cycles 3072 | page faults in loop 1024 | median   42 ns  p99   2792 ns  p99.9   9417 ns  worst   11792 ns | worst 1st pass   11792 ns, worst later passes     42 ns
+locked   cycles 3072 | page faults in loop   0 | median    0 ns  p99     42 ns  p99.9     42 ns  worst      83 ns | worst 1st pass      83 ns, worst later passes     42 ns
+unlocked cycles 3072 | page faults in loop 1024 | median   42 ns  p99   2541 ns  p99.9   9167 ns  worst   14042 ns | worst 1st pass   14042 ns, worst later passes     83 ns
+locked   cycles 3072 | page faults in loop   0 | median    0 ns  p99     42 ns  p99.9     42 ns  worst      42 ns | worst 1st pass      42 ns, worst later passes     42 ns
+unlocked cycles 3072 | page faults in loop 1024 | median   42 ns  p99   2042 ns  p99.9   8875 ns  worst   13334 ns | worst 1st pass   13334 ns, worst later passes     42 ns
+locked   cycles 3072 | page faults in loop   0 | median    0 ns  p99     42 ns  p99.9     42 ns  worst      84 ns | worst 1st pass      42 ns, worst later passes     84 ns

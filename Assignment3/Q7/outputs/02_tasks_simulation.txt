@@ -1,0 +1,22 @@
+Scenario 1: RT + ML + logging, RT locked
+  RT control  refs   20128  faults     80  (0.40%)  of which re-faults after eviction      0
+  ML          refs  120000  faults   2635  (2.20%)  of which re-faults after eviction   1135
+  logging     refs    5000  faults   5000  (100.00%)  of which re-faults after eviction      0
+  frames: 1848 usable, 80 locked by RT
+Scenario 1b: RT + ML + logging, RT NOT locked
+  RT control  refs   20128  faults    192  (0.95%)  of which re-faults after eviction    112
+  ML          refs  120000  faults   2518  (2.10%)  of which re-faults after eviction   1018
+  logging     refs    5000  faults   5000  (100.00%)  of which re-faults after eviction      0
+  frames: 1848 usable, 0 locked by RT
+Scenario 2: + 4th task of 500 MB, RT locked
+  RT control  refs   20128  faults     80  (0.40%)  of which re-faults after eviction      0
+  ML          refs  120000  faults  21252  (17.71%)  of which re-faults after eviction  19752
+  logging     refs    5000  faults   5000  (100.00%)  of which re-faults after eviction      0
+  4th task    refs   40000  faults   7065  (17.66%)  of which re-faults after eviction   6565
+  frames: 1848 usable, 80 locked by RT
+Scenario 3: + 4th task of 500 MB, RT NOT locked
+  RT control  refs   20128  faults    192  (0.95%)  of which re-faults after eviction    112
+  ML          refs  120000  faults  20767  (17.31%)  of which re-faults after eviction  19267
+  logging     refs    5000  faults   5000  (100.00%)  of which re-faults after eviction      0
+  4th task    refs   40000  faults   6881  (17.20%)  of which re-faults after eviction   6381
+  frames: 1848 usable, 0 locked by RT
