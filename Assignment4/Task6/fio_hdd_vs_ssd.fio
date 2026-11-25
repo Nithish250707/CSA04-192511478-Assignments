@@ -1,0 +1,19 @@
+; Validate the device figures used in video_sim.c (NOT run here: fio is not installed and
+; this Mac has no hard disk). Run on the lab machine:  fio fio_hdd_vs_ssd.fio
+; Set filename= to a file on the HDD and on the SSD in turn.
+[global]
+ioengine=libaio
+direct=1
+size=4G
+runtime=30
+time_based
+filename=/mnt/disk/fio-test.bin
+
+[seq-read-4m]
+rw=read
+bs=4m
+
+[rand-read-2m-start]
+stonewall
+rw=randread
+bs=2m

@@ -1,0 +1,23 @@
+== Capacity and throughput
+library 2304 GB (avg 1.15 GB/video); 2 copies = 4609 GB; +25% free space = 5761 GB raw
+SSD tier for the top 400 videos: 464 GB; they receive 80.3% of views (Zipf 1)
+2,000 streams x 5 Mbit/s = 1250 MB/s; one HDD streaming 4 MB chunks with a seek each = 103.0 MB/s (165 streams)
+Design A devices at <= 80% load: 16 HDDs
+Design B devices at <= 80% load: 3 SSDs (1004 MB/s of hits) + 3 HDDs (246 MB/s of misses)
+
+== Disk reads to start playing at minute m of a 1 GB video (4 KB blocks, 5 Mbit/s)
+  minute  0 -> block       0: classic inode 1 reads (+1 inode); extents 1 extent-tree read + 1 data read
+  minute  5 -> block   45776: classic inode 3 reads (+1 inode); extents 1 extent-tree read + 1 data read
+  minute 10 -> block   91552: classic inode 3 reads (+1 inode); extents 1 extent-tree read + 1 data read
+  minute 15 -> block  137329: classic inode 3 reads (+1 inode); extents 1 extent-tree read + 1 data read
+  minute 20 -> block  183105: classic inode 3 reads (+1 inode); extents 1 extent-tree read + 1 data read
+  minute 25 -> block  228881: classic inode 3 reads (+1 inode); extents 1 extent-tree read + 1 data read
+
+== Simulation: 100 starts/s, 2 MiB per start (assumed device figures)
+Design A: 4 HDDs
+  HDD utilisation 81% 63% 57% 53%, mean start latency on HDD 55.3 ms
+  ALL starts: mean 55.3 ms, p95 142.6 ms, p99 237.8 ms, max 580.4 ms
+Design B: SSD cache (top 400) + 4 HDDs
+  SSD hit ratio 80.4% | SSD utilisation 33%, mean start latency on SSD 5.1 ms
+  HDD utilisation 12% 13% 12% 13%, mean start latency on HDD 27.3 ms
+  ALL starts: mean 9.5 ms, p95 25.5 ms, p99 42.1 ms, max 97.8 ms
