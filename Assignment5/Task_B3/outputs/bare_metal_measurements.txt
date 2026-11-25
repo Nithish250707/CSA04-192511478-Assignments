@@ -1,0 +1,36 @@
+== Host
+Darwin 27.0.0 arm64
+ProductName:		macOS ProductVersion:		27.0.1 BuildVersion:		26A434 
+CPU cores: 10   RAM: 16384 MiB
+python: Python 3.13.2   gunicorn: gunicorn (version 23.0.0)   This is ApacheBench, Version 2.3 <$Revision: 1923142 $>
+
+== Start-up time (launch -> first HTTP 200 on /health), 5 cold starts, empty DB each time
+run 1: 113 ms
+run 2: 114 ms
+run 3: 122 ms
+run 4: 115 ms
+run 5: 116 ms
+
+== Disk size
+4 KiB	/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B3/../Task_B2/app/app.py
+4 KiB	/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B3/../Task_B2/app/requirements.txt
+32020 KiB	/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment5/Task_B3/.venv
+32028 KiB	total (app + virtualenv; the system Python itself is not counted)
+
+== Memory (RSS of gunicorn master + 2 workers)
+idle: 94064 KiB
+
+== Requests per second: ab -n 10000 -c 50 http://127.0.0.1:8020/result/20260001 (3 runs)
+run 1: Complete requests:      10000
+run 1: Failed requests:        0
+run 1: Requests per second:    5026.06 [#/sec] (mean)
+run 1: Time per request:       9.948 [ms] (mean)
+run 2: Complete requests:      10000
+run 2: Failed requests:        0
+run 2: Requests per second:    5123.63 [#/sec] (mean)
+run 2: Time per request:       9.759 [ms] (mean)
+run 3: Complete requests:      10000
+run 3: Failed requests:        0
+run 3: Requests per second:    5099.78 [#/sec] (mean)
+run 3: Time per request:       9.804 [ms] (mean)
+after load: 95152 KiB RSS

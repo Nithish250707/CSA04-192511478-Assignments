@@ -1,0 +1,3 @@
+deployment.yaml parsed OK: ['Deployment', 'Service']
+hpa.yaml parsed OK: ['HorizontalPodAutoscaler']
+replicas = 3 ; selector = {'matchLabels': {'app': 'result-portal'}} ; resources = {'requests': {'cpu': '250m', 'memory': '256Mi'}, 'limits': {'cpu': '500m', 'memory': '512Mi'}}
