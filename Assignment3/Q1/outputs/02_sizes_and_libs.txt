@@ -1,0 +1,41 @@
+== Executable sizes (bytes)
+50544 bank_dynamic
+50568 bank_static
+1272 libbankcrypt.a
+33424 libbankcrypt.dylib
+
+== Shared libraries (Linux: ldd; macOS: otool -L)
+$ otool -L bank_static
+bank_static:
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)
+$ otool -L bank_dynamic
+bank_dynamic:
+	@rpath/libbankcrypt.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)
+
+== Undefined symbols resolved at load time (nm -u)
+$ nm -u bank_static
+___stack_chk_fail
+___stack_chk_guard
+_dladdr
+_free
+_getpid
+_malloc
+_printf
+_puts
+_sleep
+_strcmp
+_strlen
+$ nm -u bank_dynamic
+___stack_chk_fail
+___stack_chk_guard
+_crypt_encrypt
+_crypt_version
+_dladdr
+_free
+_getpid
+_malloc
+_printf
+_puts
+_sleep
+_strcmp

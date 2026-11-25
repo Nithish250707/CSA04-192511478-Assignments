@@ -1,0 +1,3 @@
+$ ./dlopen_demo
+Start-up done; encryption not loaded yet.
+Loaded bankcrypt 1.0 at run time: encrypt("ACCOUNT42") = "DFFRXQW75" (crypt_encrypt at 0x104918424)

@@ -1,0 +1,15 @@
+== Shared library missing
+$ ./bank_dynamic
+dyld[5990]: Library not loaded: @rpath/libbankcrypt.dylib
+  Referenced from: <1158F80C-DFB5-3462-8288-3AC1BFB28CB1> /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+  Reason: tried: '/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib' (no such file), '/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib' (no such file)
+./run.sh: line 79:  5990 Abort trap: 6           ./bank_dynamic
+exit status: 134
+$ ./bank_static
+pid 5991 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+exit status: 0
+$ ./dlopen_demo
+dlopen failed: dlopen(./libbankcrypt.dylib, 0x0006): tried: './libbankcrypt.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS./libbankcrypt.dylib' (no such file), '/usr/lib/./libbankcrypt.dylib' (no such file, not in dyld cache), './libbankcrypt.dylib' (no such file), '/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib' (no such file), '/Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib' (no such file)
+Continuing without encryption (feature disabled).
+Start-up done; encryption not loaded yet.
+exit status: 2

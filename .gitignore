@@ -3,3 +3,12 @@
 __pycache__/
 *.pyc
 *.db
+# compiled binaries (rebuild with run.sh)
+Assignment3/**/bin/
+Assignment4/**/bin/
+Assignment3/Q1/bank_static
+Assignment3/Q1/bank_dynamic
+Assignment3/Q1/dlopen_demo
+*.dylib
+*.a
+*.o

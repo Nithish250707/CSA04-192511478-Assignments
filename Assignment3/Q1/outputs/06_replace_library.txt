@@ -1,0 +1,11 @@
+== Replace the shared library WITHOUT recompiling bank_dynamic
+before:
+pid 5967 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+pid 5968 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+$ gcc -std=c11 -Wall -Wextra -O2 -fPIC -dynamiclib -install_name @rpath/libbankcrypt.dylib bankcrypt_v2.c -o libbankcrypt.dylib
+after (same binaries, no rebuild):
+pid 5972 using bankcrypt 1.1 (security fix): encrypt("ACCOUNT42") = "kiied~"
+pid 5973 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+Start-up done; encryption not loaded yet.
+Loaded bankcrypt 1.1 (security fix) at run time: encrypt("ACCOUNT42") = "kiied~" (crypt_encrypt at 0x1023ac424)
+bank_dynamic checksum unchanged: a9703ac2818d3ea6e93b6177035a929a6400297e  bank_dynamic

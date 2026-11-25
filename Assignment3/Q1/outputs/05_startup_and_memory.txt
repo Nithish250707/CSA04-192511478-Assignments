@@ -1,0 +1,7 @@
+== Start-up time: 500 runs each (wall clock for the whole loop)
+bank_static: 1.672 ms per run
+bank_dynamic: 1.742 ms per run
+
+== Memory: maximum resident set size (Linux: /usr/bin/time -v; macOS: /usr/bin/time -l)
+bank_static: 1703936 maximum resident set size 278 page reclaims
+bank_dynamic: 1736704 maximum resident set size 288 page reclaims

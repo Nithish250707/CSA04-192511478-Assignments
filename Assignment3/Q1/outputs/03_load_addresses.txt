@@ -1,0 +1,29 @@
+$ ./bank_static --where
+pid 4943 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+Load addresses (ASLR changes them on every run):
+  main (program text)    0x102a3c4f8  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_static
+  crypt_encrypt (library) 0x102a3c72c  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_static
+  printf (libSystem)     0x1840bed6c  /usr/lib/system/libsystem_c.dylib
+  global_counter (data)  0x102a44000  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_static
+  heap block             0x1030d53b0
+  stack variable         0x16d3c2a94
+
+$ ./bank_dynamic --where
+pid 4944 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+Load addresses (ASLR changes them on every run):
+  main (program text)    0x102868550  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+  crypt_encrypt (library) 0x102884424  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib
+  printf (libSystem)     0x1840bed6c  /usr/lib/system/libsystem_c.dylib
+  global_counter (data)  0x102870000  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+  heap block             0x102e593b0
+  stack variable         0x16d596a94
+
+$ ./bank_dynamic --where   (second run: ASLR moves everything)
+pid 4945 using bankcrypt 1.0: encrypt("ACCOUNT42") = "DFFRXQW75"
+Load addresses (ASLR changes them on every run):
+  main (program text)    0x104ca4550  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+  crypt_encrypt (library) 0x104cc0424  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib
+  printf (libSystem)     0x1840bed6c  /usr/lib/system/libsystem_c.dylib
+  global_counter (data)  0x104cac000  /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+  heap block             0x1053953b0
+  stack variable         0x16b15aa94

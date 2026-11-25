@@ -1,0 +1,15 @@
+== Two copies running at once: which pages are shared (Linux: /proc/<pid>/maps, pmap; macOS: vmmap)
+--- vmmap 5976 (libbankcrypt and libsystem_c text regions)
+__TEXT                      102bd4000-102bd8000    [   16K    16K     0K     0K] r-x/r-x SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+__TEXT                      102bf0000-102bf4000    [   16K    16K     0K     0K] r-x/rwx SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib
+__TEXT                      184091000-184114000    [  524K   492K     0K     0K] r-x/r-x SM=COW          /usr/lib/system/libsystem_c.dylib
+--- vmmap 5977 (libbankcrypt and libsystem_c text regions)
+__TEXT                      104624000-104628000    [   16K    16K     0K     0K] r-x/r-x SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/bank_dynamic
+__TEXT                      104640000-104644000    [   16K    16K     0K     0K] r-x/rwx SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q1/libbankcrypt.dylib
+__TEXT                      184091000-184114000    [  524K   492K     0K     0K] r-x/r-x SM=COW          /usr/lib/system/libsystem_c.dylib
+--- vmmap -summary 5976 (resident vs shared)
+Physical footprint:         1216K
+Physical footprint (peak):  1232K
+__TEXT                            6408K    6104K       0K       0K       0K       0K       0K       83 
+TOTAL                            386.8G   410.6M    1232K       0K       0K       0K       0K      325 
+TOTAL                              17.2M       368K       368K         0K        179        73K       295K     81%       9

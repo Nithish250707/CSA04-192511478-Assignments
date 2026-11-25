@@ -1,0 +1,8 @@
+$ gcc -std=c11 -Wall -Wextra -O2 -c bankcrypt_v1.c && ar rcs libbankcrypt.a bankcrypt_v1.o
+$ gcc -std=c11 -Wall -Wextra -O2 bank.c libbankcrypt.a -o bank_static          # library linked statically
+$ gcc -std=c11 -Wall -Wextra -O2 -static bank.c libbankcrypt.a -o bank_fullstatic   # fully static (libc too)
+ld: library 'crt0.o' not found
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+$ gcc -std=c11 -Wall -Wextra -O2 -fPIC -dynamiclib -install_name @rpath/libbankcrypt.dylib bankcrypt_v1.c -o libbankcrypt.dylib
+$ gcc -std=c11 -Wall -Wextra -O2 bank.c -L. -lbankcrypt -Wl,-rpath,@executable_path -o bank_dynamic
+$ gcc -std=c11 -Wall -Wextra -O2 dlopen_demo.c -o dlopen_demo
