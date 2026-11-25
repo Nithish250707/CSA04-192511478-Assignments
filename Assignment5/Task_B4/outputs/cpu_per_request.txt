@@ -1,0 +1,7 @@
+requests: 20000
+Failed requests:        0
+Requests per second:    5072.92 [#/sec] (mean)
+gunicorn CPU time before: 0.14s  after: 7.78s
+CPU-seconds used: 7.64
+CPU-ms per request: 0.382
+requests per CPU-second: 2617.8

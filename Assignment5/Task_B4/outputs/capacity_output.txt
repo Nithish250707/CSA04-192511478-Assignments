@@ -1,0 +1,14 @@
+Students 150,000 in 2 h, 5 requests each
+Average load       :    104.2 req/s
+Peak load (x3)     :    312.5 req/s
+Worst case (10 min):   1250.0 req/s
+
+Measured: 5099.78 req/s per unlimited 2-worker instance; 2617.8 req per CPU-second
+=> one pod limited to 500m CPU can serve about 1309 req/s
+
+ CPU cost vs demo | pods @ peak | pods @ worst | pods to deploy (min 3)
+--------------------------------------------------------------------------
+               x1 |           1 |            2 |                      3
+              x10 |           4 |           14 |                      4
+              x50 |          18 |           69 |                     18
+             x100 |          35 |          137 |                     35

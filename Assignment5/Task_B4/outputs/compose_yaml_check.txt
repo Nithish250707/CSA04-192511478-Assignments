@@ -1,0 +1,4 @@
+docker-compose.yml parsed OK
+  portal  limits = {'cpus': '0.50', 'memory': '512M'}
+  lms     limits = {'cpus': '0.25', 'memory': '128M'}
+  db      limits = {'cpus': '0.50', 'memory': '512M'}

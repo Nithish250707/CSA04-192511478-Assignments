@@ -1,0 +1,45 @@
+# B4.1: two services on the same host, each with its own CPU and memory limits.
+#   portal – the result portal from Task_B2 (+ its PostgreSQL database)
+#   lms    – a second service (learning-management system placeholder served by Nginx)
+# Compose v2 applies deploy.resources.limits with `docker compose up` (no Swarm needed).
+services:
+  portal:
+    build: ../Task_B2/app
+    image: result-portal:1.0
+    ports: ["8000:8000"]
+    environment:
+      DATABASE_URL: postgresql://portal:portalpass@db:5432/results
+    depends_on:
+      db: { condition: service_healthy }
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 512M }
+        reservations: { cpus: "0.25", memory: 256M }
+
+  lms:
+    image: nginx:1.27-alpine
+    ports: ["8081:80"]
+    volumes:
+      - ./lms:/usr/share/nginx/html:ro
+    deploy:
+      resources:
+        limits: { cpus: "0.25", memory: 128M }
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: portal
+      POSTGRES_PASSWORD: portalpass   # demo only
+      POSTGRES_DB: results
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portal -d results"]
+      interval: 2s
+      retries: 15
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 512M }
+
+volumes:
+  pgdata:

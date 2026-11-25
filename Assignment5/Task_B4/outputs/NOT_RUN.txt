@@ -1,0 +1,1 @@
+docker: command not found on this host (macOS 27.0.1) – two-service compose not started
