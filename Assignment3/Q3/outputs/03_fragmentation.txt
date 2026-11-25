@@ -1,0 +1,23 @@
+segment 19 (786) did not fit
+segment 20 (584) did not fit
+after loading 20 segments:         free   325  holes  1  largest hole   325  external fragmentation 0.0%
+after removing 10 segments:        free  4820  holes  9  largest hole   894  external fragmentation 81.5%
+  new segment 22 of 995 units does not fit
+  new segment 25 of 885 units does not fit
+  new segment 26 of 990 units does not fit
+  new segment 27 of 693 units does not fit
+  new segment 28 of 758 units does not fit
+  new segment 29 of 818 units does not fit
+  new segment 30 of 957 units does not fit
+  new segment 31 of 797 units does not fit
+  new segment 32 of 747 units does not fit
+  new segment 33 of 737 units does not fit
+  new segment 34 of 669 units does not fit
+  new segment 35 of 635 units does not fit
+  new segment 36 of 737 units does not fit
+  new segment 37 of 865 units does not fit
+  new segment 38 of 808 units does not fit
+  new segment 39 of 771 units does not fit
+  new segment 40 of 653 units does not fit
+new segments tried 20, failed 17
+after loading new segments:        free  2601  holes  9  largest hole   528  external fragmentation 79.7%

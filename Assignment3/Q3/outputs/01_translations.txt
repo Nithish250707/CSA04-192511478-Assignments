@@ -1,0 +1,18 @@
+Segment table: seg name base limit prot
+  0 code    219  600 r-x
+  1 data   2300   14 rw-
+  2 heap     90  100 rw-
+  3 stack  1327  580 rw-
+  4 shared 1952   96 r--
+Translations (r = read, w = write):
+(0,  430) r : code   base  219 +  430 = physical 649
+(1,   10) w : data   base 2300 +   10 = physical 2310
+(2,  500) r : TRAP - offset 500 >= limit 100 of heap (segmentation fault)
+(3,  400) w : stack  base 1327 +  400 = physical 1727
+(4,  112) r : TRAP - offset 112 >= limit 96 of shared (segmentation fault)
+(0,  599) r : code   base  219 +  599 = physical 818
+(1,   14) r : TRAP - offset 14 >= limit 14 of data (segmentation fault)
+(3,    0) w : stack  base 1327 +    0 = physical 1327
+Extra checks:
+(0,   10) w : TRAP - write to code segment (r-x): protection fault
+(5,    0) r : TRAP - no such segment

@@ -1,0 +1,5 @@
+process uses 75 MB in 4 segments
+pure paging, single-level table  :  4194304 B (4096 KB) - covers the whole 4 GB space
+pure paging, two-level table     :    94208 B (92 KB) - only tables for used regions
+pure segmentation                :       32 B - 4 entries of base+limit
+segmentation with paging         :    76832 B (75 KB) - one page table per segment

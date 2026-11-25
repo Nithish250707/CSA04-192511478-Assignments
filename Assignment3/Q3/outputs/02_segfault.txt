@@ -1,0 +1,12 @@
+$ ./bin/segv 1
+writing to read-only literal at 0x10200860c
+caught signal 10 (SIGBUS), faulting address 0x10200860c, si_code 1
+exit status: 138
+$ ./bin/segv 2
+dereferencing NULL
+caught signal 11 (SIGSEGV), faulting address 0x0, si_code 2
+exit status: 139
+$ ./bin/segv 3   (no handler installed)
+dereferencing NULL
+./run.sh: line 8:  6219 Segmentation fault: 11  ./bin/segv 3
+exit status: 139 (128 + signal number)

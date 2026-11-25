@@ -1,0 +1,6 @@
+Segments of a running process (Linux: cat /proc/6223/maps; macOS: vmmap 6223)
+__TEXT                      102924000-102928000    [   16K    16K     0K     0K] r-x/r-x SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q3/bin/segment
+__DATA_CONST                102928000-10292c000    [   16K    16K     0K     0K] r--/rw- SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q3/bin/segment
+__LINKEDIT                  10292c000-102930000    [   16K    16K     0K     0K] r--/r-- SM=COW          /Users/nithishgovindasamy/CSA04-192511478-Assignments/Assignment3/Q3/bin/segment
+Stack                       16cce0000-16d4dc000    [ 8176K    32K    32K     0K] rw-/rwx SM=PRV          thread 0
+Stack                             8176K      32K      32K       0K       0K       0K       0K        1 
