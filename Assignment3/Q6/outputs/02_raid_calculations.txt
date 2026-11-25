@@ -1,0 +1,16 @@
+Level    usable   efficiency  survives            I/Os per small write
+RAID 0    24 TB   100.0%     0 failures          1
+RAID 1    12 TB    50.0%     1 per mirror pair   2 (3 pairs of mirrors)
+RAID 5    20 TB    83.3%     1 failure           4 (read data+parity, write data+parity)
+RAID 6    16 TB    66.7%     any 2 failures      6 (read data+P+Q, write data+P+Q)
+RAID 10   12 TB    50.0%     1 per pair (up to 3) 2
+
+Rebuild window 11.1 h; P(a given disk fails during it) = 2.562e-05
+P(data loss | one disk has already failed), disk failures only:
+  RAID 1 / RAID 10 : 2.562e-05
+  RAID 5           : 1.281e-04
+  RAID 6           : 6.566e-09
+P(at least one of 6 disks fails in a year) = 11.42%  ->  yearly loss: RAID 5 0.0015%, RAID 10 0.0003%, RAID 6 0.0000001%
+Unrecoverable read errors while rebuilding (all surviving data must be read):
+  URE 1e-14: RAID 5 reads 20 TB -> P(>=1 URE) = 79.8%;  RAID 1/10 reads 4 TB -> 27.4%
+  URE 1e-15: RAID 5 reads 20 TB -> P(>=1 URE) = 14.8%;  RAID 1/10 reads 4 TB -> 3.1%

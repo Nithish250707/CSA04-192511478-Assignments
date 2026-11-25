@@ -1,0 +1,4 @@
+stripe = 4 x 256 KiB = 1 MiB of data (best of 5 x 200 runs, plain C at -O2; clang auto-vectorises the loops)
+RAID 5 parity (P)     :   0.012 ms per stripe  =  85251 MiB/s
+RAID 6 parity (P + Q) :   0.019 ms per stripe  =  52882 MiB/s  (1.61x RAID 5)
+check bytes: P[0]=106 Q[0]=173

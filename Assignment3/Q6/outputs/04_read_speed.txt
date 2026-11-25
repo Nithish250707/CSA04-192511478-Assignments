@@ -1,0 +1,7 @@
+Internal SSD (APFS, APPLE SSD AP0256Z):
+file /var/folders/x6/xt4f_xjd19jfm1gt2823y3r00000gn/T//a3q6_readtest.bin (512 MiB, written with caching disabled)
+  uncached (F_NOCACHE/O_DIRECT) 512 MiB in 0.164 s = 3129 MiB/s
+  uncached (F_NOCACHE/O_DIRECT) 512 MiB in 0.171 s = 2991 MiB/s
+  cached (page cache)          512 MiB in 0.158 s = 3238 MiB/s
+  cached (page cache)          512 MiB in 0.027 s = 18846 MiB/s
+Hard disk: not available on this machine (MacBook Air has only an SSD) - not measured.
